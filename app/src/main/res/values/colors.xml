@@ -7,4 +7,5 @@
     <color name="transparent20">#20000000</color>
     <color name="darkWhite">#90ffffff</color>
     <color name="color_alizarin">#e74c3c</color>
+    <color name="transparent">#00000000</color>
 </resources>

@@ -1,6 +1,7 @@
 package com.ardhiart.datasiswa;
 
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,14 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        if(fragmentManager.getBackStackEntryCount() <= 1){
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+        }
     }
+
+    public void showSnackBar(String text){
+        Snackbar.make(this.getCurrentFocus(), text, Snackbar.LENGTH_SHORT).show();
+    }
+
 }

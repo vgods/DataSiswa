@@ -43,6 +43,7 @@ public class Auth {
         SharedPreferences loginInfo = context.getSharedPreferences(LOGIN_PREFERENCE_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginInfo.edit();
         editor.clear();
+        editor.apply();
     }
 
     public static Siswa getLoginInformation(Context context){

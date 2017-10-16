@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ardhiart.datasiswa.Auth.Auth;
 import com.ardhiart.datasiswa.BaseFragment;
 import com.ardhiart.datasiswa.Dashboard.MapelFragment;
 import com.ardhiart.datasiswa.Home.Adapter.ViewPagerAdapter;
@@ -47,7 +48,7 @@ public class HomeFragment extends BaseFragment{
         adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(Nilai.newInstance(), "Nilai");
         adapter.addFragment(MapelFragment.newInstance(), "Mapel");
-        adapter.addFragment(UserFragment.newInstance(), "User");
+        adapter.addFragment(UserFragment.newInstance(), Auth.getLoginInformation(getContext()).getNama());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
