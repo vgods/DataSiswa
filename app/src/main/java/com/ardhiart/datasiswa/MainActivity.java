@@ -40,6 +40,7 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
     }
     public void replaceFragment(Fragment f){
         baseFragment = (BaseFragment) f;
+
         fragmentManager.beginTransaction()
                 .replace(R.id.container,f).addToBackStack(null)
                 .commit();
@@ -52,8 +53,6 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         fragmentManager.beginTransaction()
                 .replace(R.id.container,f).addToBackStack(null)
                 .commit();
-
-
     }
 
     @Override

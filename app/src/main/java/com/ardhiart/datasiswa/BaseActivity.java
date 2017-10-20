@@ -31,6 +31,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void syncToolbar(){
+        appBarLayout.removeAllViews();
         appBarLayout.addView(LayoutInflater.from(this).inflate(R.layout.toolbar, appBarLayout, false));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,6 +60,9 @@ public class BaseActivity extends AppCompatActivity {
         if(fragmentManager.getBackStackEntryCount() <= 1){
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(1);
+        }else {
+            baseFragment = (BaseFragment) fragmentManager.getFragments().get(fragmentManager.getBackStackEntryCount()-2);
+            super.onBackPressed();
         }
     }
 

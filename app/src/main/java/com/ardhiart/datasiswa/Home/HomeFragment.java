@@ -45,7 +45,7 @@ public class HomeFragment extends BaseFragment{
     }
 
     private void initTabLayout(){
-        adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(Nilai.newInstance(), "Nilai");
         adapter.addFragment(MapelFragment.newInstance(), "Mapel");
         adapter.addFragment(UserFragment.newInstance(), Auth.getLoginInformation(getContext()).getNama());

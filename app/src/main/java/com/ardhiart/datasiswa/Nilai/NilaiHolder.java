@@ -11,11 +11,12 @@ import com.ardhiart.datasiswa.R;
 /**
  * Created by Hinata on 10/16/2017.
  */
-public class NilaiHolder extends RecyclerView.ViewHolder {
+public class NilaiHolder extends BaseNilaiHolder {
     TextView txtNama, txtMapel, txtScore, txtMulai;
-    View round;
+    View round, item;
     public NilaiHolder(View itemView) {
         super(itemView);
+        item = itemView;
         txtNama = (TextView) itemView.findViewById(R.id.nama_tugas);
         txtMapel = (TextView) itemView.findViewById(R.id.mapel);
         txtScore = (TextView) itemView.findViewById(R.id.score);

@@ -15,17 +15,25 @@ import com.ardhiart.datasiswa.R;
  * Created by Hinata on 10/14/2017.
  */
 public class Nilai extends BaseFragment {
-    NilaiAdapter nilaiAdapter;
+
     RecyclerView rvNilai;
+    boolean onSingleMapel = false;
+    String mapelId = "";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.nilai_fragment, container, false);
         rvNilai = (RecyclerView) v.findViewById(R.id.rv_nilai);
-        nilaiAdapter = new NilaiAdapter();
         rvNilai.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvNilai.setAdapter(nilaiAdapter);
-        nilaiAdapter.initData(getContext());
+        if (onSingleMapel){
+            NilaiMapelAdapter nilaiMapelAdapter = new NilaiMapelAdapter(getContext(), mapelId);
+            rvNilai.setAdapter(nilaiMapelAdapter);
+            nilaiMapelAdapter.initData(getContext());
+        }else {
+            NilaiAdapter nilaiAdapter = new NilaiAdapter();
+            rvNilai.setAdapter(nilaiAdapter);
+            nilaiAdapter.initData(getContext());
+        }
         return v;
     }
 
@@ -34,7 +42,29 @@ public class Nilai extends BaseFragment {
         Bundle args = new Bundle();
         
         Nilai fragment = new Nilai();
+        fragment.onSingleMapel = false;
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static Nilai newInstance(String mapelId) {
+
+        Bundle args = new Bundle();
+
+        Nilai fragment = new Nilai();
+        fragment.mapelId = mapelId;
+        fragment.onSingleMapel = true;
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public boolean hasToolbar() {
+        return true;
+    }
+
+    @Override
+    public boolean isViewPager() {
+        return false;
     }
 }

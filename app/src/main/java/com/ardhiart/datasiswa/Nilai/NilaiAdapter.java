@@ -3,17 +3,21 @@ package com.ardhiart.datasiswa.Nilai;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.ardhiart.DateUtils;
 import com.ardhiart.datasiswa.API.Model.Mapel;
 import com.ardhiart.datasiswa.API.Model.NilaiDetail;
+import com.ardhiart.datasiswa.API.Model.TugasMapel;
 import com.ardhiart.datasiswa.API.Service.AccountsService;
 import com.ardhiart.datasiswa.API.Service.Callback;
 import com.ardhiart.datasiswa.API.Service.MapelService;
+import com.ardhiart.datasiswa.API.Service.NilaiService;
 import com.ardhiart.datasiswa.API.ServiceGenerator;
 import com.ardhiart.datasiswa.Adapter.ListAdapter;
 import com.ardhiart.datasiswa.Auth.Auth;
+import com.google.gson.Gson;
 
 import java.util.Collection;
 import java.util.Collections;
