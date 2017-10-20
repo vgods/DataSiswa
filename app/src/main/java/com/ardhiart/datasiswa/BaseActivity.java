@@ -38,6 +38,13 @@ public class BaseActivity extends AppCompatActivity {
         toolbar.removeAllViews();
         toolbar.addView(LayoutInflater.from(this).inflate(R.layout.toolbar_items, toolbar, false));
         btnBack = (ImageView) findViewById(R.id.btn_back);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         showBackButton();
 
         if (baseFragment.isViewPager()) syncTabLayout();
