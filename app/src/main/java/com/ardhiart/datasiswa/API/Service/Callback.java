@@ -1,4 +1,6 @@
 package com.ardhiart.datasiswa.API.Service;
+import android.util.Log;
+
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -8,12 +10,14 @@ import retrofit2.Response;
 public abstract class Callback<T> implements retrofit2.Callback<T> {
     @Override
     public void onFailure(Call<T> call, Throwable t) {
+        Log.e("error", ""+t);
         onError();
     }
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
         //TODO: Check if response contains error
+        Log.e("error", ""+response.code());
         if (response.isSuccessful()) {
             onSucces(call, response);
         } else {

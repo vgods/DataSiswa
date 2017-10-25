@@ -3,6 +3,7 @@ package com.ardhiart.datasiswa;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.*;
@@ -11,6 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.ardhiart.datasiswa.API.Model.Mapel;
+import com.ardhiart.datasiswa.API.Model.Siswa;
+import com.ardhiart.datasiswa.API.Service.AccountsService;
+import com.ardhiart.datasiswa.API.Service.Callback;
+import com.ardhiart.datasiswa.API.Service.MapelService;
+import com.ardhiart.datasiswa.API.ServiceGenerator;
+import com.ardhiart.datasiswa.IpConfig.IpFragment;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by Hinata on 10/14/2017.
@@ -75,6 +89,32 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showSnackBar(String text){
         Snackbar.make(this.getCurrentFocus(), text, Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void replaceFragment(Fragment f){
+        baseFragment = (BaseFragment) f;
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.container,f).addToBackStack(null)
+                .commit();
+
+    }
+
+    /**
+     * untuk check server aja
+     */
+    public void checkServer(){
+        ServiceGenerator.createService(MapelService.class).getAllMapel().enqueue(new Callback<List<Mapel>>() {
+            @Override
+            public void onSucces(Call<List<Mapel>> call, Response<List<Mapel>> response) {
+
+            }
+
+            @Override
+            public void onError() {
+                replaceFragment(new IpFragment());
+            }
+        });
     }
 
 }

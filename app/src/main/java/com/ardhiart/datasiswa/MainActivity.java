@@ -38,14 +38,6 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         replaceFragment(new HomeFragment());
 
     }
-    public void replaceFragment(Fragment f){
-        baseFragment = (BaseFragment) f;
-
-        fragmentManager.beginTransaction()
-                .replace(R.id.container,f).addToBackStack(null)
-                .commit();
-
-    }
 
     public void replaceFragmentFromLogin(Fragment f){
         baseFragment = (BaseFragment) f;

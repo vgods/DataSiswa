@@ -13,6 +13,7 @@ import com.ardhiart.datasiswa.Auth.Auth;
 import com.ardhiart.datasiswa.BaseFragment;
 import com.ardhiart.datasiswa.Dashboard.MapelFragment;
 import com.ardhiart.datasiswa.Home.Adapter.ViewPagerAdapter;
+import com.ardhiart.datasiswa.MainActivity;
 import com.ardhiart.datasiswa.Nilai.Nilai;
 import com.ardhiart.datasiswa.R;
 import com.ardhiart.datasiswa.User.UserFragment;
@@ -28,6 +29,7 @@ public class HomeFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.pager, container, false);
+        ((MainActivity)getActivity()).checkServer();
         viewPager = (ViewPager) v.findViewById(R.id.viewpager);
         setNotTransparentStatusBar();
         return v;

@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Hinata on 10/16/2017.
  */
 public class ServiceGenerator {
-    public static final String API_BASE_URL = "http://192.168.100.13:3000/api/";
+    public static String API_BASE_URL = "http://192.168.43.242:3000/api/";
 
     public static <S> S createService(Class<S>  serviceClass){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
